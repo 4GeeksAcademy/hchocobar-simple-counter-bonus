@@ -1,11 +1,10 @@
 // 1. Import react
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
 // 5 y 2 Exportar y crear el componente función
 export const SimpleCounter = () => {
   // 3. Código JS
-  // let counter = 4556;
   // 3.1 Defino los states
   const [counter, setCounter] = useState(45678)
   const [isActive, setIsActive] = useState(false)
@@ -31,18 +30,18 @@ export const SimpleCounter = () => {
                className: 'text-center' });
   };
     
-  
+
+  // 3.3 Agrego el useEffe
   useEffect(() => {
     if (isActive) { 
-      nIntervalId = setInterval(() => {
+      const interval = setInterval(() => {
         setCounter(counter => counter + 1)
       }, 10);
-    } 
-    return () => clearInterval(nIntervalId)
-  }, [isActive, counter]);
+      return () => clearInterval(interval);
+    };
+  }, [isActive]);
   
 
-  let nIntervalId;
   
   // 4. Retornar un solo elemento HTML
   return (
